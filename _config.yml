@@ -1,0 +1,35 @@
+title: ATM Enterprise
+email: atmenterprise23@gmail.com
+description: ""
+baseurl: "/atm"
+url: "https://atmenterprise.github.io"
+logo: "img/logo/atm-logo.jpeg"
+twitter_username: EnterpriseAtm
+github_username:  atmenterprise
+facebook_username: atmenterprisepvtltd
+twitter_url: https://twitter.com/EnterpriseAtm
+github_url: https://github.com/atmenterprise
+facebook_url: https://www.facebook.com/atmenterprisepvtltd/
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+#collections:
+#  projects:
+#    output: true
+#    permalink: /:collections
+
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
