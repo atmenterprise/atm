@@ -16,20 +16,16 @@ theme: minima
 plugins:
   - jekyll-feed
 
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - InstallationSteps.md
+
 #collections:
 #  projects:
 #    output: true
 #    permalink: /:collections
 
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+
