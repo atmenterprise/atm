@@ -5,8 +5,9 @@
 layout: home
 ---
 <div style="text-align: justify">
-    <img src="{{ site.logo }}" alt="logo" style="height: 5%; width: 5%"> 
-    <strong>ATM Enterprise</strong> is a privately owned Software company based out of London, United Kingdom. Founded in January 2023 
+    <img src="{{ site.logo }}" alt="logo" style="height: 30%; width: 30%">
+<br>
+    <strong>ATM Enterprise</strong> is a self-owned software consultancy company based out of London, United Kingdom. Founded in January 2023 
     by <a href="/atm/about">Rishu Shrivastava</a> with an aim to build applications that drive the future businesses along with helping 
     the community benefit from our knowledge and expertise.
 </div>
