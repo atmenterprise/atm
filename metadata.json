@@ -1,0 +1,6 @@
+{
+  "name": "ATM Enterprise",
+  "description": "Premium data engineering, enterprise cloud solutions, and custom software consulting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
