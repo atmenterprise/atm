@@ -20,7 +20,7 @@ npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000/atm/](http://localhost:3000/atm/).
+Open [http://localhost:3000/](http://localhost:3000/).
 
 The website is a static frontend. No API keys, environment file, or backend server are required. An internet connection is needed for Google Fonts and the Calendly scheduler.
 
@@ -37,7 +37,7 @@ npm run build
 npm run preview
 ```
 
-Use the URL printed by Vite, with `/atm/` appended if necessary. The configured base path is `/atm/` for GitHub Pages.
+Use the URL printed by Vite. The configured base path is `/` for the GitHub Pages custom domain.
 
 ## Project structure
 
