@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <title>openMarkdown</title>
+  <rect width="40" height="40" rx="9" fill="#ffde59"/>
+  <path d="M7 27V13h4l4 6 4-6h4v14h-4v-8l-4 6-4-6v8H7Z" fill="#1a1a1a"/>
+  <path d="M30 13v14m-4-4 4 4 4-4" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
