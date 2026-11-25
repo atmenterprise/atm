@@ -1,1 +1,0 @@
-import{c as e,j as t,a as r,S as s}from"./index-B5N8yHb8.js";const o="/";e.createRoot(document.getElementById("site-header")).render(t.jsx(r,{homePath:o}));e.createRoot(document.getElementById("site-footer")).render(t.jsx(s,{homePath:o}));
