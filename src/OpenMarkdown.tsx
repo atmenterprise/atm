@@ -1,6 +1,6 @@
-import { useEffect, useId, useState } from 'react';
+import { SiteFooter, SiteHeader } from './components/SiteChrome';
+import { useId, useState } from 'react';
 import { ArrowRight, ArrowUpRight, Check, Download, Github, Monitor, Moon, Play, Share2, Sun, SunDim, Type } from 'lucide-react';
-import Logo from './components/Logo';
 import './openmarkdown.css';
 
 const app = 'https://atmenterprise.github.io/openMarkdown/';
@@ -69,30 +69,17 @@ function ThemePreview() {
 }
 
 export default function OpenMarkdown() {
-  useEffect(() => {
-    const previous = document.title;
-    document.title = 'openMarkdown — Markdown editor, exports and sharing | ATM Enterprise';
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    return () => { document.title = previous; };
-  }, []);
-
   return <div className="om-page">
     <a className="skip-link" href="#om-content" onClick={(event) => {
       event.preventDefault();
       document.getElementById('om-content')?.focus();
     }}>Skip to content</a>
-    <header className="site-header">
-      <div className="container om-nav">
-        <a href="#hero" aria-label="ATM Enterprise home"><Logo variant="inline" size="md"/></a>
-        <a className="text-link" href="#projects">← All projects</a>
-        <a className="button" href={app}>Open the editor <ArrowUpRight size={16}/></a>
-      </div>
-    </header>
+    <SiteHeader homePath={import.meta.env.BASE_URL} />
     <main id="om-content" tabIndex={-1}>
       <section className="container om-hero">
         <div className="om-hero-grid">
           <div>
-            <div className="om-wordmark"><img src={`${assets}images/openmarkdown-logo.svg`} width="38" height="38" alt=""/> openMarkdown</div>
+            <div className="om-wordmark"><img src={`${assets}images/openmarkdown-logo.svg`} width="38" height="38" alt=""/> OpenMarkdown</div>
             <h1>Write, format, and <em>share Markdown.</em></h1>
             <p>Use the formatting toolbar to style your document, see it update live, then download a copy or share it with a link.</p>
             <div className="om-actions">
@@ -102,7 +89,7 @@ export default function OpenMarkdown() {
             <div className="om-assurances"><span><Check size={14}/> Free and open source</span><span><Check size={14}/> No account required</span></div>
           </div>
           <figure className="om-hero-image">
-            <img src={`${assets}images/editor.png`} alt="openMarkdown with the formatting toolbar, Markdown source, and live preview in Split view" width="1440" height="900"/>
+            <img src={`${assets}images/editor.png`} alt="OpenMarkdown with the formatting toolbar, Markdown source, and live preview in Split view" width="1440" height="900"/>
             <figcaption>Formatting toolbar and live preview in Split view</figcaption>
           </figure>
         </div>
@@ -138,7 +125,7 @@ export default function OpenMarkdown() {
       <section className="container section" id="om-demo">
         <div className="section-heading"><h2>Watch the editor walkthrough</h2><p>A 30-second introduction to writing, previewing, and switching themes.</p></div>
         <div className="om-video">
-          <video controls playsInline preload="metadata" poster={`${assets}images/editor.png`} aria-label="openMarkdown editor walkthrough">
+          <video controls playsInline preload="metadata" poster={`${assets}images/editor.png`} aria-label="OpenMarkdown editor walkthrough">
             <source src={`${assets}videos/openmarkdown-demo.mp4`} type="video/mp4"/>
             <a href={`${assets}videos/openmarkdown-demo.mp4`}><Play size={16}/> Download the walkthrough</a>
           </video>
@@ -147,13 +134,13 @@ export default function OpenMarkdown() {
       </section>
 
       <section className="container om-final">
-        <h2>Try openMarkdown</h2>
+        <h2>Try OpenMarkdown</h2>
         <div className="om-actions">
           <a className="button" href={app}>Open the editor <ArrowRight size={18}/></a>
           <a className="text-link" href="https://github.com/atmenterprise/openMarkdown"><Github size={17}/> View the source</a>
         </div>
       </section>
     </main>
-    <footer className="container om-footer"><a href="#hero">← ATM Enterprise</a><span>Apps That Matter.</span><a href={app}>Open the editor <ArrowUpRight size={14}/></a></footer>
+    <SiteFooter homePath={import.meta.env.BASE_URL} />
   </div>;
 }

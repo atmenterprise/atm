@@ -76,7 +76,7 @@ export default function Team() {
               </div>
 
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Rishu Shrivastava is a seasoned Big Data solution architect specializing in high-velocity streaming environments, cloud-native SaaS development, and distributed query performance tuning. He established ATM Enterprise to help startups and scaling companies construct durable cloud-native software and scalable data backbones.
+                Rishu Shrivastava is a seasoned Big Data solution architect specializing in high-velocity streaming environments, cloud-native SaaS development, and distributed query performance tuning. He established Apps That Matter to help startups and scaling companies construct durable cloud-native software and scalable data backbones.
               </p>
             </div>
 

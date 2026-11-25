@@ -7,9 +7,9 @@ export default function Pricing() {
 
   // Custom mail Link helper
   const constructMailto = () => {
-    const subject = encodeURIComponent(`ATM Enterprise Query: ${selectedService} (${projectScale})`);
+    const subject = encodeURIComponent(`Apps That Matter Query: ${selectedService} (${projectScale})`);
     const body = encodeURIComponent(
-      `Hi Rishu & ATM Enterprise Team,\n\nI am writing to initiate our Free Introductory Consultation.\n\nProject Scope Specs:\n- Primary Focus: ${selectedService}\n- Scale Estimate: ${projectScale}\n\nI would like to schedule a session to review our systems and establish a Statement of Work.\n\nBest regards,\n[My Name]\n[My Company]`
+      `Hi Rishu & Apps That Matter Team,\n\nI am writing to initiate our Free Introductory Consultation.\n\nProject Scope Specs:\n- Primary Focus: ${selectedService}\n- Scale Estimate: ${projectScale}\n\nI would like to schedule a session to review our systems and establish a Statement of Work.\n\nBest regards,\n[My Name]\n[My Company]`
     );
     return `mailto:atmenterprise23@gmail.com?subject=${subject}&body=${body}`;
   };

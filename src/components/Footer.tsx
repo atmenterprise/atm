@@ -72,7 +72,7 @@ export default function Footer({ onScrollTo }: FooterProps) {
             </a>
           </div>
           <p className="text-center xl:text-right text-[10px] text-zinc-400 leading-relaxed font-semibold">
-            © 2026, ATM ENTERPRISE. All rights reserved.
+            © 2026, Apps That Matter. All rights reserved.
           </p>
         </div>
 

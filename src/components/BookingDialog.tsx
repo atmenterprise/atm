@@ -46,7 +46,7 @@ export default function BookingDialog({ onClose }: { onClose: () => void }) {
       <p id="booking-description" className="booking-description">Choose a time that works for you. Scheduling is provided by Calendly.</p>
       <div className="booking-calendar">
         {loading && <p className="booking-loading" role="status">Loading available times…</p>}
-        <iframe src={embedUrl.toString()} title="Schedule a 30-minute meeting with ATM Enterprise" onLoad={() => setLoading(false)} />
+        <iframe src={embedUrl.toString()} title="Schedule a 30-minute meeting with Apps That Matter" onLoad={() => setLoading(false)} />
       </div>
       <div className="legal-bottom"><span>Calendar not loading?</span><a className="text-link" href={bookingUrl} target="_blank" rel="noopener noreferrer">Open Calendly in a new tab <ArrowUpRight size={16} /></a></div>
     </dialog>

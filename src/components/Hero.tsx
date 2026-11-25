@@ -39,7 +39,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-base text-zinc-500 sm:text-lg">
-            ATM Enterprise is an agile engineering studio. We construct bulletproof cloud integrations, continuous-stream big data architectures, and high-performance custom applications engineered to scale.
+            Apps That Matter is an agile engineering studio. We construct bulletproof cloud integrations, continuous-stream big data architectures, and high-performance custom applications engineered to scale.
           </p>
 
           {/* Genuine Action Buttons */}

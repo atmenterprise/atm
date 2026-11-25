@@ -6,6 +6,17 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     base: '/',
+    build: {
+      rollupOptions: {
+        input: {
+          home: path.resolve(__dirname, 'index.html'),
+          openmarkdown: path.resolve(__dirname, 'openmarkdown/index.html'),
+          products: path.resolve(__dirname, 'products/index.html'),
+          studio: path.resolve(__dirname, 'products/atm-content-studio/index.html'),
+          koonj: path.resolve(__dirname, 'koonj/index.html'),
+        },
+      },
+    },
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

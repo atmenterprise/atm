@@ -1,10 +1,11 @@
-# ATM Enterprise
+# Apps That Matter
 
-ATM Enterprise builds AI and data solutions, custom applications, and business websites. This repository contains the company’s responsive website, built with React, TypeScript, Vite, and Tailwind CSS.
+Apps That Matter builds AI and data solutions, custom applications, and business websites. This repository contains the company’s responsive website, built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## What’s included
 
 - AI, data engineering, and digital experience services.
+- The Products page lists **OpenMarkdown** and **ATM Content Studio**.
 - Selected projects: **ATM Content Studio**, **OpenMarkdown**, and custom websites for **JazBooM & Melabagan Banquets**.
 - A Calendly booking pop-up for 30-minute calls, alongside email enquiries.
 - GitHub, LinkedIn, Facebook, and X social links.
@@ -65,7 +66,7 @@ Vite copies files from `public/` into the build output. Reference public assets 
 - **Content and projects:** edit `src/App.tsx`. Project interface graphics are labeled illustrative concepts.
 - **Design:** edit `src/index.css`.
 - **Brand assets:** update the relevant files in `public/`. The inline, square, and icon variants are selected by `src/components/Logo.tsx`.
-- **Scheduling:** update `bookingUrl` in `src/components/BookingDialog.tsx`. The current booking page is [ATM Enterprise on Calendly](https://calendly.com/atmenterprise23/30min). The scheduler loads when a visitor opens the booking dialog; a direct link is available as a fallback.
+- **Scheduling:** update `bookingUrl` in `src/components/BookingDialog.tsx`. The current booking page is [Apps That Matter on Calendly](https://calendly.com/atmenterprise23/30min). The scheduler loads when a visitor opens the booking dialog; a direct link is available as a fallback.
 - **Contact and social links:** edit `src/App.tsx`.
 - **Privacy and disclaimer:** edit `src/components/LegalDialog.tsx` and keep the notice consistent with any changes to data collection or integrations.
 - **Page title, description, and favicons:** edit `index.html`.
