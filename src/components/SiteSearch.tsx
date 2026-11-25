@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Search, X } from 'lucide-react';
-import { koonjUrl, openMarkdownUrl, productsUrl, studioUrl } from './ProductsMenu';
+import { koonjUrl, openMarkdownUrl, productsUrl, studioUrl } from '../products';
 
 const home = import.meta.env.BASE_URL;
 const entries = [

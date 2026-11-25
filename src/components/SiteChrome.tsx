@@ -3,7 +3,8 @@ import { ArrowUpRight, CalendarDays, Facebook, Github, Linkedin, Menu, Twitter, 
 import BookingDialog, { bookingUrl } from './BookingDialog';
 import LegalDialog, { type LegalSection } from './LegalDialog';
 import Logo from './Logo';
-import ProductsMenu, { productsUrl } from './ProductsMenu';
+import ProductsMenu from './ProductsMenu';
+import { productsUrl } from '../products';
 import SiteSearch from './SiteSearch';
 
 const links = [

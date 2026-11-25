@@ -1,11 +1,7 @@
 import { useRef } from 'react';
 
-const base = import.meta.env.BASE_URL;
-export const koonjUrl = `${base}koonj/`;
-export const koonjIcon = `${koonjUrl}koonj-mark.svg`;
-export const studioUrl = `${base}products/atm-content-studio/`;
-export const openMarkdownUrl = `${base}openmarkdown/`;
-export const productsUrl = `${base}products/`;
+import { products } from '../products';
+import ProductIcon from './ProductIcon';
 
 export default function ProductsMenu({ homePath = '', onSelect }: { homePath?: string; onSelect?: () => void }) {
   const menu = useRef<HTMLDetailsElement>(null);
@@ -31,17 +27,16 @@ export default function ProductsMenu({ homePath = '', onSelect }: { homePath?: s
       }
     }}>
       <summary aria-label="Show product links"></summary>
-      <ul>
-        <li><a href={openMarkdownUrl} onClick={select}>
-          <img src={`${base}openmarkdown/images/openmarkdown-logo.svg`} alt="" /><span><strong>OpenMarkdown</strong><small>Write, preview, and share Markdown</small></span>
-        </a></li>
-        <li><a href={studioUrl} onClick={select}>
-          <span className="studio-menu-icon" aria-hidden="true">✳</span><span><strong>ATM Content Studio</strong><small>AI-powered content creation</small></span>
-        </a></li>
-        <li><a href={koonjUrl} onClick={select}>
-          <img src={koonjIcon} alt="" /><span><strong>Koonj</strong><small>File archiving, tiering, and recall</small></span>
-        </a></li>
-      </ul>
+        <ul>
+          {products.map(product => (
+            <li key={product.id}>
+              <a href={product.url} onClick={select}>
+                <ProductIcon product={product} />
+                <span><strong>{product.name}</strong><small>{product.category}</small></span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </details>
     </div>
   );

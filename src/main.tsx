@@ -2,7 +2,7 @@ import {StrictMode} from 'react';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { openMarkdownUrl, productsUrl, studioUrl } from './components/ProductsMenu';
+import { openMarkdownUrl, productsUrl, studioUrl } from './products';
 
 const legacyRoutes = new Map([
   ['#/openmarkdown', openMarkdownUrl],

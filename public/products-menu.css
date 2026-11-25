@@ -52,9 +52,8 @@
 .products-menu strong { font-size: .9375rem; font-weight: 650; }
 .products-menu small { margin-top: 3px; font-size: .8125rem; color: #54574d; }
 .products-menu img, .studio-menu-icon { width: 34px; height: 34px; flex: none; }
-.products-menu img { filter: grayscale(1); }
 .products-menu a::selection, .products-menu a ::selection { background: #dedfd9; }
-.studio-menu-icon { display: grid; place-items: center; border-radius: 8px; background: #e8e8d8; font-size: 1.25rem; }
+.studio-menu-icon { display: grid; place-items: center; border-radius: 8px; background: #dce9d8; color: #294b37; font-size: 1.25rem; }
 .koonj-product-mark { background: #eae9dd; }
 .studio-detail { max-width: 640px; }
 .studio-detail > p { margin-top: 16px; }
