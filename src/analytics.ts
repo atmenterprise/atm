@@ -1,15 +1,15 @@
-// Google Tag Manager container ID. The Google Analytics tag itself is
-// configured inside this container in Tag Manager. GTM loads only after the
-// visitor accepts analytics cookies.
-export const gtmContainerId = 'GTM-KVXVKW8D';
+// Google Analytics 4 Measurement ID (Admin → Data streams → Web stream).
+// Google Analytics loads only after the visitor accepts analytics cookies.
+export const gaMeasurementId = 'G-TZ6GLGY8FG';
 
-export const analyticsConfigured = /^GTM-[A-Z0-9]+$/.test(gtmContainerId);
+export const analyticsConfigured = /^G-[A-Z0-9]+$/.test(gaMeasurementId);
 
 export type Consent = 'granted' | 'denied';
 
 const storageKey = 'atm-analytics-consent';
+const disableKey = `ga-disable-${gaMeasurementId}`;
 
-type GtmWindow = Window & { dataLayer?: unknown[] };
+type GtagWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; [key: string]: unknown };
 
 export function readConsent(): Consent | null {
   try {
@@ -33,21 +33,31 @@ export function saveConsent(consent: Consent) {
 let loaded = false;
 
 export function loadAnalytics() {
-  if (!analyticsConfigured || loaded || typeof window === 'undefined') return;
+  if (!analyticsConfigured || typeof window === 'undefined') return;
+  const w = window as unknown as GtagWindow;
+  w[disableKey] = false;
+  if (loaded) return;
   loaded = true;
 
-  const w = window as unknown as GtmWindow;
   w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  w.gtag = function gtag() {
+    // gtag.js expects the arguments object itself, not an array.
+    // eslint-disable-next-line prefer-rest-params
+    w.dataLayer!.push(arguments);
+  };
+  w.gtag('js', new Date());
+  w.gtag('config', gaMeasurementId);
 
   const script = document.createElement('script');
   script.async = true;
-  script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmContainerId)}`;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`;
   document.head.appendChild(script);
 }
 
 function disableAnalytics() {
   if (!analyticsConfigured) return;
+  // Stops a running gtag.js from sending further hits on this page.
+  (window as unknown as GtagWindow)[disableKey] = true;
   // Remove Google Analytics cookies (_ga, _ga_<id>) from this host and its parent domains.
   const parts = window.location.hostname.split('.');
   const domains = parts.map((_, i) => parts.slice(i).join('.'));
@@ -58,6 +68,4 @@ function disableAnalytics() {
     document.cookie = expired;
     for (const domain of domains) document.cookie = `${expired}; domain=.${domain}`;
   }
-  // Tag Manager can't be unloaded from a running page, so reload to stop it.
-  if (loaded) window.location.reload();
 }
