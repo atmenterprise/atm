@@ -1,5 +1,5 @@
 import { SiteFooter } from './components/SiteChrome';
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import {
   ArrowRight, ArrowUpRight, Bot, Check, Coffee, Copy, Download, Eye, FilePlus2, FolderOpen, Github, Laptop, Lock, Menu, Moon,
   Navigation, Palette, Play, Plug, RefreshCw, Replace, ScanText, Share2, ShieldCheck, Sparkles, Sun, SunDim,
@@ -16,12 +16,23 @@ const npmUrl = 'https://www.npmjs.com/package/' + mcpPackage;
 const assets = `${import.meta.env.BASE_URL}openmarkdown/`;
 
 const navLinks = [
+  ['#om-demo', 'Demo'],
   ['#om-agents', 'AI agents'],
   ['#om-file-sync', 'File sync'],
-  ['#om-setup', 'Get started'],
-  ['#om-privacy', 'Privacy'],
   ['#om-features', 'Features'],
+  ['#om-privacy', 'Privacy'],
+  ['#om-setup', 'Get started'],
 ] as const;
+
+const chapters = [
+  { time: 0, label: 'Write with live preview' },
+  { time: 9, label: 'Add the MCP server' },
+  { time: 15, label: 'Turn on Agent bridge' },
+  { time: 21, label: 'Rewrite a selection' },
+  { time: 30, label: 'Open and navigate' },
+  { time: 39, label: 'Export and share' },
+] as const;
+const formatTime = (seconds: number) => `0:${String(seconds).padStart(2, '0')}`;
 
 const agents = ['Claude Code', 'Codex CLI', 'Cursor', 'Any MCP client'];
 
@@ -212,6 +223,77 @@ function ThemePreview() {
   </section>;
 }
 
+function DemoVideo() {
+  const video = useRef<HTMLVideoElement>(null);
+  const userPaused = useRef(false);
+  const autoPausing = useRef(false);
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const el = video.current;
+    if (!el) return;
+    el.muted = true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Autoplay while the player is on screen; pause it when scrolled away so it restarts in context.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (el.paused && !userPaused.current) el.play().catch(() => {});
+      } else if (!el.paused) {
+        autoPausing.current = true;
+        el.pause();
+      }
+    }, { threshold: 0.35 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const seek = (time: number) => {
+    const el = video.current;
+    if (!el) return;
+    el.currentTime = time;
+    userPaused.current = false;
+    el.play().catch(() => {});
+  };
+  const active = chapters.reduce((found, chapter, index) => current >= chapter.time ? index : found, 0);
+
+  return <div className="om-player">
+    <div className="om-player-frame">
+      <div className="om-player-top" aria-hidden="true">
+        <span className="om-player-dots"><i/><i/><i/></span>
+        <span>openmarkdown.appsthatmatter.uk</span>
+        <span className="om-player-live"><i/> Walkthrough</span>
+      </div>
+      <video
+        ref={video}
+        controls
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={`${assets}images/walkthrough-poster.jpg`}
+        aria-label="OpenMarkdown walkthrough: writing, connecting the MCP server and editing with an AI agent"
+        onTimeUpdate={event => setCurrent(event.currentTarget.currentTime)}
+        onPlay={() => { userPaused.current = false; }}
+        onPause={() => {
+          if (!autoPausing.current) userPaused.current = true;
+          autoPausing.current = false;
+        }}
+      >
+        <source src={`${assets}videos/openmarkdown-demo.mp4`} type="video/mp4"/>
+        <a href={`${assets}videos/openmarkdown-demo.mp4`}><Play size={16}/> Download the walkthrough</a>
+      </video>
+    </div>
+    <ol className="om-chapters" aria-label="Jump to a part of the walkthrough">
+      {chapters.map((chapter, index) => <li key={chapter.time}>
+        <button type="button" aria-current={index === active ? 'step' : undefined} onClick={() => seek(chapter.time)}>
+          <span className="om-chapter-time">{formatTime(chapter.time)}</span>
+          <span>{chapter.label}</span>
+        </button>
+      </li>)}
+    </ol>
+  </div>;
+}
+
 export default function OpenMarkdown() {
   return <div className="om-page">
     <a className="skip-link" href="#om-content" onClick={(event) => {
@@ -228,7 +310,7 @@ export default function OpenMarkdown() {
             <p>OpenMarkdown by Apps That Matter runs in your browser. Claude Code, Codex and Cursor can work in it too. Highlight a paragraph, ask your agent to improve it, and watch the change appear. Every edit can be undone and nothing is saved until you have checked it.</p>
             <div className="om-actions">
               <a className="button" href={app}>Open the editor <ArrowUpRight size={18}/></a>
-              <a className="text-link" href="#om-setup"><Plug size={17}/> Connect your agent in 2 minutes</a>
+              <a className="text-link" href="#om-demo"><Play size={17}/> Watch the 49-second demo</a>
             </div>
             <div className="om-assurances"><span><Check size={14}/> Free and open source</span><span><Check size={14}/> No account required</span><span><Check size={14}/> Your documents stay on your device</span></div>
           </div>
@@ -246,6 +328,18 @@ export default function OpenMarkdown() {
         <div className="container">
           <span>Works with</span>
           <ul>{agents.map(agent => <li key={agent}><Bot size={15} aria-hidden="true"/>{agent}</li>)}</ul>
+        </div>
+      </section>
+
+      <section className="om-demo" id="om-demo" aria-labelledby="om-demo-heading">
+        <div className="container section">
+          <div className="om-demo-heading">
+            <span className="om-eyebrow"><Play size={13} aria-hidden="true"/> 49-second walkthrough</span>
+            <h2 id="om-demo-heading">See your agent edit alongside you.</h2>
+            <p>Write with a live preview, add the MCP server, turn on Agent bridge, and watch Claude Code rewrite a highlighted paragraph, then open and navigate a new document.</p>
+          </div>
+          <DemoVideo/>
+          <p className="om-video-note">On-screen captions. No audio required. Recorded with the real editor and the real openmarkdown-mcp server.</p>
         </div>
       </section>
 
@@ -288,6 +382,36 @@ export default function OpenMarkdown() {
         </figure>
       </section>
 
+      <section className="om-features" id="om-features">
+        <div className="container section">
+          <div className="section-heading"><div><span className="om-eyebrow">Everything else you’d expect</span><h2>A great editor, even without an agent.</h2></div></div>
+          <div className="om-feature-grid">
+            {features.map(({ icon: Icon, title, description }) => <article key={title}>
+              <Icon className="om-feature-icon" size={22} aria-hidden="true"/>
+              <h3>{title}</h3><p>{description}</p>
+            </article>)}
+          </div>
+        </div>
+      </section>
+
+      <ThemePreview/>
+
+      <section className="container section om-trust" id="om-privacy" aria-labelledby="om-trust-heading">
+        <div>
+          <span className="om-eyebrow"><Lock size={13} aria-hidden="true"/> Private by default</span>
+          <h2 id="om-trust-heading">Your agent connects to your editor. Nothing else can.</h2>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Stays on your computer.</strong> The bridge only accepts connections from your own machine (127.0.0.1), so nothing on your network or the internet can reach it.</li>
+            <li><strong>Only OpenMarkdown can connect.</strong> Connections from any other website are refused.</li>
+            <li><strong>Off until you turn it on.</strong> The editor makes no connection attempts until you enable the bridge or your agent opens it for you.</li>
+            <li><strong>Open source.</strong> Licensed under Apache 2.0, so you can read every line on GitHub.</li>
+          </ul>
+          <p className="om-trust-note">When the bridge is on, your document is shared with the agent you run, which may send it to its AI provider under that provider’s terms.</p>
+        </div>
+      </section>
+
       <section className="om-setup" id="om-setup" aria-labelledby="om-setup-heading">
         <div className="container section">
           <div className="section-heading">
@@ -318,47 +442,6 @@ export default function OpenMarkdown() {
             </li>
           </ol>
         </div>
-      </section>
-
-      <section className="container section om-trust" id="om-privacy" aria-labelledby="om-trust-heading">
-        <div>
-          <span className="om-eyebrow"><Lock size={13} aria-hidden="true"/> Private by default</span>
-          <h2 id="om-trust-heading">Your agent connects to your editor. Nothing else can.</h2>
-        </div>
-        <div>
-          <ul>
-            <li><strong>Stays on your computer.</strong> The bridge only accepts connections from your own machine (127.0.0.1), so nothing on your network or the internet can reach it.</li>
-            <li><strong>Only OpenMarkdown can connect.</strong> Connections from any other website are refused.</li>
-            <li><strong>Off until you turn it on.</strong> The editor makes no connection attempts until you enable the bridge or your agent opens it for you.</li>
-            <li><strong>Open source.</strong> Licensed under Apache 2.0, so you can read every line on GitHub.</li>
-          </ul>
-          <p className="om-trust-note">When the bridge is on, your document is shared with the agent you run, which may send it to its AI provider under that provider’s terms.</p>
-        </div>
-      </section>
-
-      <section className="om-features" id="om-features">
-        <div className="container section">
-          <div className="section-heading"><div><span className="om-eyebrow">Everything else you’d expect</span><h2>A great editor, even without an agent.</h2></div></div>
-          <div className="om-feature-grid">
-            {features.map(({ icon: Icon, title, description }) => <article key={title}>
-              <Icon className="om-feature-icon" size={22} aria-hidden="true"/>
-              <h3>{title}</h3><p>{description}</p>
-            </article>)}
-          </div>
-        </div>
-      </section>
-
-      <ThemePreview/>
-
-      <section className="container section" id="om-demo">
-        <div className="section-heading"><div><span className="om-eyebrow"><Play size={13} aria-hidden="true"/> 49-second walkthrough</span><h2>See your agent edit alongside you.</h2></div><p>Write with a live preview, add the MCP server, turn on Agent bridge, and watch Claude Code rewrite a highlighted paragraph, then open and navigate a new document.</p></div>
-        <div className="om-video">
-          <video controls playsInline preload="metadata" poster={`${assets}images/walkthrough-poster.jpg`} aria-label="OpenMarkdown walkthrough: writing, connecting the MCP server and editing with an AI agent">
-            <source src={`${assets}videos/openmarkdown-demo.mp4`} type="video/mp4"/>
-            <a href={`${assets}videos/openmarkdown-demo.mp4`}><Play size={16}/> Download the walkthrough</a>
-          </video>
-        </div>
-        <p className="om-video-note">On-screen captions. No audio required. Recorded with the real editor and the real openmarkdown-mcp server.</p>
       </section>
 
       <section className="container om-final">

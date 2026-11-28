@@ -7,7 +7,7 @@ const server = await createServer({
 });
 try {
   const { render } = await server.ssrLoadModule('/src/prerender.tsx');
-  for (const path of ['/', '/openmarkdown/', '/products/', '/products/atm-content-studio/']) {
+  for (const path of ['/', '/openmarkdown/', '/products/', '/products/atm-content-studio/', '/work/']) {
     const file = `dist${path}index.html`;
     const html = await readFile(file, 'utf8');
     const root = '<div id="root"></div>';

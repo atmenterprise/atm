@@ -1,12 +1,12 @@
 # Apps That Matter
 
-Apps That Matter builds AI and data solutions, custom applications, and business websites. This repository contains the company’s responsive website, built with React, TypeScript, Vite, and Tailwind CSS.
+Apps That Matter is an independent product studio building AI-powered software. This repository contains the company’s responsive website, built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## What’s included
 
-- AI, data engineering, and digital experience services.
-- The Products page lists **OpenMarkdown by Apps That Matter** and **ATM Content Studio**.
-- Selected projects: **ATM Content Studio**, **OpenMarkdown by Apps That Matter**, and custom websites for **JazBooM & Melabagan Banquets**.
+- A product-first home page: OpenMarkdown is available now; Koonj and ATM Content Studio are marked as coming soon.
+- The Products page lists **OpenMarkdown by Apps That Matter**, **Koonj** and **ATM Content Studio**.
+- A separate Client work page (`/work/`) with custom websites for **JazBooM & Melabagan Banquets**.
 - A Calendly booking pop-up for 30-minute calls, alongside email enquiries.
 - GitHub, LinkedIn, Facebook, and X social links.
 - Disclaimer and privacy dialogs.

@@ -1,15 +1,15 @@
 import { useRef, useState } from 'react';
 import { Search, X } from 'lucide-react';
-import { koonjUrl, openMarkdownUrl, productsUrl, studioUrl } from '../products';
+import { koonjUrl, openMarkdownUrl, productsUrl, studioUrl, workUrl } from '../products';
 
 const home = import.meta.env.BASE_URL;
 const entries = [
   { title: 'OpenMarkdown by Apps That Matter', url: openMarkdownUrl, description: 'Free Markdown editor built for AI agents and web browsers, with live preview, export and sharing.', keywords: 'formatting toolbar markdown pdf html download open source ai agent mcp claude code codex cursor file sync desktop' },
-  { title: 'ATM Content Studio', url: studioUrl, description: 'An AI-powered studio for creating content.', keywords: 'artificial intelligence writing' },
-  { title: 'Koonj', url: koonjUrl, description: 'Catalog, archive, tier, and recall files across local, shared, and cloud storage.', keywords: 'Amazon S3 NAS SMB file lifecycle storage' },
+  { title: 'ATM Content Studio', url: studioUrl, description: 'Coming soon: an AI-powered studio for creating content.', keywords: 'artificial intelligence writing upcoming early access' },
+  { title: 'Koonj', url: koonjUrl, description: 'Coming soon: catalog, archive, tier, and recall files across local, shared, and cloud storage.', keywords: 'Amazon S3 NAS SMB file lifecycle storage upcoming early access' },
   { title: 'Products', url: productsUrl, description: 'Browse all Apps That Matter products.', keywords: 'software tools' },
-  { title: 'What we do', url: home + '#capabilities', description: 'AI and automation, data engineering, websites, and custom applications.', keywords: 'services analytics cloud development' },
-  { title: 'Selected work', url: home + '#projects', description: 'Explore our products and customer projects.', keywords: 'portfolio JazBooM Melabagan Banquets' },
+  { title: 'How we build', url: home + '#capabilities', description: 'The AI, data, and software foundations behind our products.', keywords: 'services analytics cloud development ai data engineering' },
+  { title: 'Client work', url: workUrl, description: 'Websites and applications we have built for clients.', keywords: 'portfolio projects custom websites JazBooM Melabagan Banquets' },
   { title: 'About us', url: home + '#about', description: 'Meet the team behind Apps That Matter.', keywords: 'founder Rishu Shrivastava' },
   { title: 'Contact', url: home + '#contact', description: 'Book a call or email us about your project.', keywords: 'sales support meeting' },
 ];

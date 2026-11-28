@@ -14,6 +14,7 @@ export default defineConfig(() => {
           products: path.resolve(__dirname, 'products/index.html'),
           studio: path.resolve(__dirname, 'products/atm-content-studio/index.html'),
           koonj: path.resolve(__dirname, 'koonj/index.html'),
+          work: path.resolve(__dirname, 'work/index.html'),
         },
       },
     },
