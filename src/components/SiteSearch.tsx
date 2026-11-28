@@ -4,7 +4,7 @@ import { koonjUrl, openMarkdownUrl, productsUrl, studioUrl } from '../products';
 
 const home = import.meta.env.BASE_URL;
 const entries = [
-  { title: 'OpenMarkdown', url: openMarkdownUrl, description: 'Free online Markdown editor with live preview, export, and sharing.', keywords: 'formatting toolbar markdown pdf html download open source' },
+  { title: 'OpenMarkdown', url: openMarkdownUrl, description: 'Free Markdown editor built for AI agents and web browsers, with live preview, export and sharing.', keywords: 'formatting toolbar markdown pdf html download open source ai agent mcp claude code codex cursor file sync desktop' },
   { title: 'ATM Content Studio', url: studioUrl, description: 'An AI-powered studio for creating content.', keywords: 'artificial intelligence writing' },
   { title: 'Koonj', url: koonjUrl, description: 'Catalog, archive, tier, and recall files across local, shared, and cloud storage.', keywords: 'Amazon S3 NAS SMB file lifecycle storage' },
   { title: 'Products', url: productsUrl, description: 'Browse all Apps That Matter products.', keywords: 'software tools' },

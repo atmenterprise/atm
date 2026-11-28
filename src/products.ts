@@ -18,8 +18,8 @@ export const products = [
     name: 'OpenMarkdown',
     url: openMarkdownUrl,
     icon: `${openMarkdownUrl}images/openmarkdown-logo.svg`,
-    category: 'Markdown editing',
-    summary: 'Write and preview Markdown in a free editor with five export formats and read-only sharing links.',
+    category: 'Markdown for AI agents',
+    summary: 'A free browser Markdown editor that Claude Code, Codex and Cursor can work in, with live file sync and five export formats.',
   },
   {
     id: 'studio',
