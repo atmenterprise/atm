@@ -95,9 +95,9 @@ function OpenMarkdownHeader() {
 
   return <header className="om-nav">
     <div className="container om-nav-inner">
-      <a className="om-nav-brand" href="#om-content" onClick={close}>
+      <a className="om-nav-brand" href="#om-content" onClick={close} aria-label="OpenMarkdown by Apps That Matter">
         <img src={`${assets}images/openmarkdown-logo.svg`} width="36" height="36" alt=""/>
-        <span>open<span className="om-nav-light">Markdown</span><small>WORDS · DATA · AI AGENTS</small></span>
+        <span>open<span className="om-nav-light">Markdown</span><small>BY APPS THAT MATTER</small></span>
       </a>
       <nav className="om-nav-links" aria-label="OpenMarkdown">
         {navLinks.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
@@ -225,7 +225,7 @@ export default function OpenMarkdown() {
           <div>
             <span className="om-badge"><Sparkles size={13} aria-hidden="true"/> New: agent bridge and live file sync</span>
             <h1>The Markdown editor <em>your AI agent can work in.</em></h1>
-            <p>OpenMarkdown runs in your browser. Claude Code, Codex and Cursor can work in it too. Highlight a paragraph, ask your agent to improve it, and watch the change appear. Every edit can be undone and nothing is saved until you have checked it.</p>
+            <p>OpenMarkdown by Apps That Matter runs in your browser. Claude Code, Codex and Cursor can work in it too. Highlight a paragraph, ask your agent to improve it, and watch the change appear. Every edit can be undone and nothing is saved until you have checked it.</p>
             <div className="om-actions">
               <a className="button" href={app}>Open the editor <ArrowUpRight size={18}/></a>
               <a className="text-link" href="#om-setup"><Plug size={17}/> Connect your agent in 2 minutes</a>
@@ -369,6 +369,7 @@ export default function OpenMarkdown() {
           <a className="text-link" href="#om-setup"><Plug size={17}/> Set up the agent bridge</a>
           <a className="text-link" href={repo}><Github size={17}/> Star on GitHub</a>
         </div>
+        <p className="om-affiliation">OpenMarkdown by Apps That Matter is an independent product. It is not affiliated with, endorsed by or connected to any other product or company using a similar name.</p>
       </section>
     </main>
     <SiteFooter homePath={import.meta.env.BASE_URL} />

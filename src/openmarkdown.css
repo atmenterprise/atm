@@ -155,6 +155,7 @@
 .om-nav-brand img { border-radius:8px; }
 .om-nav-light { font-weight:450; }
 .om-nav-brand small { display:block; margin-top:3px; font-size:8px; font-weight:600; letter-spacing:2px; color:var(--muted); }
+.om-final .om-affiliation { margin-top:28px; font-size:13px; color:var(--muted); }
 .om-nav-links { display:flex; gap:28px; font-size:13px; font-weight:500; }
 .om-nav-links a { padding-block:10px; }
 .om-nav-links a:hover { color:#746000; }
@@ -179,7 +180,7 @@
   .om-nav-inner { height:68px; gap:10px; }
   .om-nav-brand { font-size:19px; gap:8px; }
   .om-nav-brand img { width:30px; height:30px; }
-  .om-nav-brand small { display:none; }
+  .om-nav-brand small { font-size:7px; letter-spacing:1.5px; }
   .om-nav .om-nav-cta { padding:9px 12px; font-size:12px; gap:6px; }
   .om-nav-actions { gap:6px; }
 }
